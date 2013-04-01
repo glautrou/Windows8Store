@@ -25,7 +25,7 @@ namespace Windows8Store
             //OAuthWebSecurity.RegisterFacebookClient(
             //    appId: "",
             //    appSecret: "");
-
+            
             OAuthWebSecurity.RegisterGoogleClient();
         }
     }
