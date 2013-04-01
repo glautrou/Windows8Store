@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4d57d0104ac6443f948291fd9370b76d" Name="Diagram1" >
+        <EntityTypeShape EntityType="Windows8Model.Computer" Width="1.5" PointX="2.375" PointY="1.25" />
+        <EntityTypeShape EntityType="Windows8Model.Brand" Width="1.5" PointX="5.125" PointY="1.25" />
+        <AssociationConnector Association="Windows8Model.BrandComputer" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

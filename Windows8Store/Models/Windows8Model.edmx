@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Windows8Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="Windows8ModelTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Windows8Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Windows8ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Computers" EntityType="Windows8Model.Computer" />
+          <EntitySet Name="Brands" EntityType="Windows8Model.Brand" />
+          <AssociationSet Name="BrandComputer" Association="Windows8Model.BrandComputer">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Computer" EntitySet="Computers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Computer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Windows8Model.ComputerType" Name="Type" Nullable="false" ConcurrencyMode="None" />
+          <NavigationProperty Name="Brand" Relationship="Windows8Model.BrandComputer" FromRole="Computer" ToRole="Brand" />
+        </EntityType>
+        <EnumType Name="ComputerType">
+          <Member Name="Desktop" />
+          <Member Name="Laptop" />
+          <Member Name="Tablet" />
+          <Member Name="Smartphone" />
+        </EnumType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <NavigationProperty Name="Computers" Relationship="Windows8Model.BrandComputer" FromRole="Brand" ToRole="Computer" />
+        </EntityType>
+        <Association Name="BrandComputer">
+          <End Type="Windows8Model.Brand" Role="Brand" Multiplicity="0..1" />
+          <End Type="Windows8Model.Computer" Role="Computer" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Windows8Model" />
+        <Alias Key="Target" Value="Windows8Model.Store" />
+        <EntityContainerMapping CdmEntityContainer="Windows8ModelContainer" StorageEntityContainer="Windows8ModelTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
